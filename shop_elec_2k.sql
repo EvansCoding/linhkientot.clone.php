@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 07, 2020 lúc 06:22 PM
+-- Thời gian đã tạo: Th6 10, 2020 lúc 06:57 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.5
 
@@ -70,8 +70,20 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`ID`, `META_KEY`, `META_NAME`, `ID_PARENT`) VALUES
-(5, 'Kiet', 'THIẾT BỊ, DỤNG CỤasf', NULL),
-(98, 'asdxcvzx', 'asdsa', 5);
+(117, '#', 'KIT, CẢM BIẾN', NULL),
+(118, '#', 'ROBOT, MÔ HÌNH', NULL),
+(119, '#', 'THIẾT BỊ, DỤNG CỤ', NULL),
+(121, '#', 'Vi điều khiển', 117),
+(122, '#', 'Module, Cảm biến', 117),
+(123, '#', 'Arduino', 117),
+(124, '#', 'Xe & phụ kiện xe', 118),
+(125, '#', 'Drone & phụ kiện', 118),
+(126, '#', 'RC Robot & phụ kiện', 118),
+(127, '#', 'Động cơ, Driver', 118),
+(128, '#', 'Thiết bị thông minh', 119),
+(129, '#', 'Đồng hồ & phụ kiện', 119),
+(130, '#', 'Nguồn, adapter', 119),
+(131, '#', 'Mỏ hàn, trạm hàn', 119);
 
 -- --------------------------------------------------------
 
@@ -84,6 +96,13 @@ CREATE TABLE `image` (
   `PATH_IMAGE` varchar(255) DEFAULT NULL,
   `ID_PRODUCT` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `image`
+--
+
+INSERT INTO `image` (`ID`, `PATH_IMAGE`, `ID_PRODUCT`) VALUES
+(54, 'public/Media/Uploads/20200520_144245.jpg', 'asdf');
 
 -- --------------------------------------------------------
 
@@ -119,7 +138,7 @@ CREATE TABLE `product` (
   `PRICE` float DEFAULT NULL,
   `DISCOUNT` float DEFAULT NULL,
   `QUANTUM` int(11) DEFAULT 0,
-  `STATUS` bit(1) DEFAULT NULL,
+  `STATUS` int(2) DEFAULT NULL,
   `DESCRIPTION` varchar(500) DEFAULT NULL,
   `CONTENT` text DEFAULT NULL,
   `IMAGE` varchar(255) DEFAULT NULL,
@@ -128,6 +147,14 @@ CREATE TABLE `product` (
   `ID_CATEGORY` int(11) DEFAULT NULL,
   `ID_MEMBER` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `product`
+--
+
+INSERT INTO `product` (`ID`, `NAME`, `PRICE`, `DISCOUNT`, `QUANTUM`, `STATUS`, `DESCRIPTION`, `CONTENT`, `IMAGE`, `CREATE_AT`, `UPDATE_AT`, `ID_CATEGORY`, `ID_MEMBER`) VALUES
+('asdf', 'asdf', 0, 0, 3, 1, 'asdfasf', '<p>asdf</p>', 'public/Media/Uploads/DangNhap.png', '2020-06-10 23:42:05', '2020-06-10 23:53:23', 121, 1),
+('p01', 'Raspberry Pi 4 Model B - RAM 1GB, 2GB, 4GB kiet', 50000, 40000, 100, 1, 'dsafsavcxvxc', '<p>safsaf</p>', 'public/Media/Uploads/rc%20robot%20arm%204dof%20canh%20tay%20robot%20mo%20hinh.jpg', '2020-06-09 14:48:31', '2020-06-10 22:37:16', 123, 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -189,13 +216,13 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT cho bảng `image`
 --
 ALTER TABLE `image`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT cho bảng `member`
