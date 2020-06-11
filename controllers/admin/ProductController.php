@@ -6,7 +6,7 @@ class ProductController extends Controller
         $this->folder = "admin";
         if(!isset($_SESSION['admin']))
         {
-            header("Location: http://localhost:8080/web-shop/indexadmin");
+            header("Location: http://localhost:8081/web-shop/indexadmin");
         }
 
     }
@@ -86,12 +86,15 @@ class ProductController extends Controller
                     $setVal[11] = $_SESSION['admin'][0];
                 
                     $result = $md->insert('product', $setVal, $row);
-                    $countListImage = count($data[9]);
-                    if($countListImage > 0){
-                        for ($i=0; $i < $countListImage ; $i++) { 
-                            $image->insert('image',array($data[9][$i],$data[0]),array('PATH_IMAGE','ID_PRODUCT'));
+                    if(isset($data[9])){
+                        $countListImage = count($data[9]);
+                        if($countListImage > 0){
+                            for ($i=0; $i < $countListImage ; $i++) { 
+                                $image->insert('image',array($data[9][$i],$data[0]),array('PATH_IMAGE','ID_PRODUCT'));
+                            }
                         }
                     }
+
                     if ($result) {
                         $data = 1;
                     } else {
