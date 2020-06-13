@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 10, 2020 lúc 06:57 PM
+-- Thời gian đã tạo: Th6 13, 2020 lúc 01:54 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.5
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `shop_elec_2k`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `banner`
+--
+
+CREATE TABLE `banner` (
+  `ID` int(11) NOT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `PATH_IMAGE` varchar(225) DEFAULT NULL,
+  `SERIAL` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `banner`
+--
+
+INSERT INTO `banner` (`ID`, `TITLE`, `PATH_IMAGE`, `SERIAL`) VALUES
+(13, 'Nguyen Tuan Kiet', 'public/Media/Uploads/webservices.jpg', 4),
+(14, 'kiet dep trai', 'public/Media/Uploads/%7B439B6C9E-3EE9-4B97-9D91-BC341DCF840B%7D.png.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -124,7 +145,29 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`ID`, `NICKNAME`, `USERNAME`, `PASSWORD`, `EMAIL`, `THUMBNAIL`) VALUES
-(1, 'CrossX', 'admin', 'admin', 'admin@gmail.com', 'png');
+(1, 'Nguyen Kiet', 'admin', 'admin', 'admin@gmail.com', 'public/Media/Uploads/Family%20GPS%20tracker%20KidsControl_1.png'),
+(3, 'Lac Ngoc Khanh', 'khanh', '123456', 'khanh@gmail.com', 'public/Media/Uploads/20200513_160215.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `post`
+--
+
+CREATE TABLE `post` (
+  `ID` int(11) NOT NULL,
+  `TITLE` varchar(255) DEFAULT NULL,
+  `CONTENT` text DEFAULT NULL,
+  `CREATE_AT` datetime DEFAULT current_timestamp(),
+  `PATH_IMAGE` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `post`
+--
+
+INSERT INTO `post` (`ID`, `TITLE`, `CONTENT`, `CREATE_AT`, `PATH_IMAGE`) VALUES
+(4, 'masfasjfasf', '', '2020-06-12 18:52:39', 'public/Media/Uploads/webservices.jpg');
 
 -- --------------------------------------------------------
 
@@ -153,12 +196,19 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ID`, `NAME`, `PRICE`, `DISCOUNT`, `QUANTUM`, `STATUS`, `DESCRIPTION`, `CONTENT`, `IMAGE`, `CREATE_AT`, `UPDATE_AT`, `ID_CATEGORY`, `ID_MEMBER`) VALUES
+(' arduino_uno_r3', 'Arduino Uno R3 - Chíp Cắm Kèm Cáp', 100000000, 0, 100, 1, 'asdasd', '<p><span style=\"color: #0000ff;\"> <strong>Arduino Uno R3 </strong></span>là dòng Arduino cơ bản, linh hoạt, thường được sử dụng cho những dự án đơn giản, mức độ vừa phải, đặc biêt thường sử dụng cho người mới bắt đầu tiếp xúc và làm quen với Arduino.<br /><span style=\"color: #0000ff;\"><strong>           Boards Arduino</strong> </span>có một số dòng như: Arduino Mega, Arduino Nano, Arduino Micro... Nhưng với những ứng dụng cơ bản như: hiển thị LED, hiển thị LCD, điều khiển động cơ bước, điều khiển động cơ servo, sử dụng với cảm biến ngoài... thì mạch <span style=\"color: #333399;\"><strong>Arduino Uno R3</strong></span> là lựa chọn phù hợp nhất.</p>', 'public/Media/Uploads/20200520_144245.jpg', '2020-06-11 10:37:18', '2020-06-12 18:53:55', 126, 1),
 ('asdf', 'asdf', 0, 0, 3, 1, 'asdfasf', '<p>asdf</p>', 'public/Media/Uploads/DangNhap.png', '2020-06-10 23:42:05', '2020-06-10 23:53:23', 121, 1),
 ('p01', 'Raspberry Pi 4 Model B - RAM 1GB, 2GB, 4GB kiet', 50000, 40000, 100, 1, 'dsafsavcxvxc', '<p>safsaf</p>', 'public/Media/Uploads/rc%20robot%20arm%204dof%20canh%20tay%20robot%20mo%20hinh.jpg', '2020-06-09 14:48:31', '2020-06-10 22:37:16', 123, 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Chỉ mục cho bảng `cart`
@@ -195,6 +245,12 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Chỉ mục cho bảng `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
@@ -207,6 +263,12 @@ ALTER TABLE `product`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
@@ -216,19 +278,25 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT cho bảng `image`
 --
 ALTER TABLE `image`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT cho bảng `member`
 --
 ALTER TABLE `member`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `post`
+--
+ALTER TABLE `post`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
