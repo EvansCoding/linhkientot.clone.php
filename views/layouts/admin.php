@@ -88,13 +88,13 @@
                             <span>ADMIN CONTENT </span>
                         </li>
                         <li>
-                            <a>
+                            <a href="/web-shop/banner">
                                 <i class="fa fa-image"></i>
                                 <span class="menu-text">Banner</span>
                             </a>
                         </li>
                         <li>
-                            <a>
+                            <a href="/web-shop/post">
                                 <i class="fab fa-blogger"></i>
                                 <span class="menu-text">Blog/News</span>
                             </a>
@@ -103,7 +103,7 @@
                         <li class="header-menu">
                             <span>ADMIN SYSTEM </span> </li>
                         <li>
-                            <a>
+                            <a href="/web-shop/member">
                                 <i class="fas fa-users-cog"></i>
                                 <span class="menu-text">User</span>
                             </a>

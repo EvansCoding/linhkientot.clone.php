@@ -1,3 +1,13 @@
+<style>
+    .comp-card {
+        -webkit-box-shadow: 3px 3px 3px 3px #ccc;
+        /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+        -moz-box-shadow: 3px 3px 3px 3px #ccc;
+        /* Firefox 3.5 - 3.6 */
+        box-shadow: 3px 3px 3px 3px #ccc;
+    }
+</style>
+
 <div id="overlay"></div>
 <div class="container-fluid p-3">
     <div class="row">
@@ -10,161 +20,97 @@
     </div>
     <div class="row title">
         <div class="form-group col-md-12">
-            <h2 class="title-content">Manage Documents</h2>
+            <h2 class="title-content">DASHBOARD</h2>
         </div>
     </div>
     <div class="row main-content">
-        <div class="form-group col-md-12">
-            <button type="button" class="btn btn-info btn-add-data" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-plus-square" style="margin-right: 5px ;"></i>Add</button>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-12 col-xl-4">
+                    <div class="card comp-card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-b-25">Impressions</h6>
+                                    <h3 class="f-w-700 text-c-blue">1,500</h3>
+                                    <p class="m-b-0"> May 23 - June 01 2020</p>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-eye bg-c-blue"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-4">
+                    <div class="card comp-card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-b-25">Impressions</h6>
+                                    <h3 class="f-w-700 text-c-blue">1,500</h3>
+                                    <p class="m-b-0"> May 23 - June 01 2020</p>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-eye bg-c-blue"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-4">
+                    <div class="card comp-card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="m-b-25">Impressions</h6>
+                                    <h3 class="f-w-700 text-c-blue">1,500</h3>
+                                    <p class="m-b-0"> May 23 - June 01 2020</p>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-eye bg-c-blue"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group col-md-12">
-            <table id="table" class="table  table-hover" style="width: 100% !important;">
-                <thead style="width: 100%">
-                    <tr>
-                        <th style="width: 5%;">#</th>
-                        <th style="width: 30%; min-width: 180px;">Title</th>
-                        <th style="width: auto;min-width: 100px;">Tags</th>
-                        <th style="width: 10%; min-width: 100px;">Author</th>
-                        <th style="width: 10%; min-width: 100px;">Update At</th>
-                        <th style="width: 5%; min-width: 50px;">Publish</th>
-                        <th style="width: 5%; min-width: 100px;">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Những website học lập trình căn bản</td>
-                        <td>
-                            <ul class="tags">
-                                <li class="tag">javascript</li>
-                                <li class="tag">css</li>
-                                <li class="tag">fe</li>
-                                <li class="tag">website</li>
-                                <li class="tag">code</li>
-                                <li class="tag">youtube</li>
-                            </ul>
-                        </td>
-                        <td>Evans</td>
-                        <td>09/04/2020</td>
-                        <td>
-                            <a href="#">
-                                <span class="badge badge-danger">hidden</span>
-                            </a>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btnView">
-                                <i class="far fa-eye"></i>
-                            </button>
-
-                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
-                                <i class="far fa-edit"></i>
-                            </button>
-
-                            <button type="button" class="btn btnDelete">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Sách về ngôn ngữ lập trình C sharp </td>
-                        <td>
-                            <ul class="tags">
-                                <li class="tag">program</li>
-                                <li class="tag">laptrinh</li>
-                                <li class="tag">c#</li>
-                                <li class="tag">c sharp</li>
-                            </ul>
-                        </td>
-                        <td>Evans</td>
-                        <td>09/04/2020</td>
-                        <td>
-                            <a href="#">
-                                <span class="badge badge-success">publish</span>
-                            </a>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btnView">
-                                <i class="far fa-eye"></i>
-                            </button>
-
-                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
-                                <i class="far fa-edit"></i>
-                            </button>
-
-                            <button type="button" class="btn btnDelete">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Kênh học css thuần</td>
-                        <td>
-                            <ul class="tags">
-                                <li class="tag">program</li>
-                                <li class="tag">laptrinh</li>
-                                <li class="tag">c#</li>
-                                <li class="tag">c sharp</li>
-                            </ul>
-                        </td>
-                        <td>Evans</td>
-                        <td>09/04/2020</td>
-                        <td>
-                            <a href="#">
-                                <span class="badge badge-danger">hidden</span>
-                            </a>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btnView">
-                                <i class="far fa-eye"></i>
-                            </button>
-
-                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
-                                <i class="far fa-edit"></i>
-                            </button>
-
-                            <button type="button" class="btn btnDelete">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Lập trình game với Unity</td>
-                        <td>
-                            <ul class="tags">
-                                <li class="tag">program</li>
-                                <li class="tag">laptrinh</li>
-                                <li class="tag">c#</li>
-                                <li class="tag">c sharp</li>
-                            </ul>
-                        </td>
-                        <td>Evans</td>
-                        <td>09/04/2020</td>
-                        <td>
-                            <a href="#">
-                                <span class="badge badge-success">publish</span>
-                            </a>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btnView">
-                                <i class="far fa-eye"></i>
-                            </button>
-
-                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
-                                <i class="far fa-edit"></i>
-                            </button>
-
-                            <button type="button" class="btn btnDelete">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-12" style="margin-top: 14px">
+            <div class="card comp-card">
+                <div class="body-card">
+                    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

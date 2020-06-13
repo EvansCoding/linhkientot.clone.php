@@ -8,7 +8,6 @@ class ProductController extends Controller
         {
             header("Location: http://localhost:8081/web-shop/indexadmin");
         }
-
     }
 
     function index()
