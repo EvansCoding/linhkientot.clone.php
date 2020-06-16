@@ -7,6 +7,9 @@ class CartModel extends Model
         parent::__construct();
     }
 
-    
+    function getCartByID($id=''){
+        $result = $this->select('*','CART','ID = '. $id,null);
+        return $result;
+    }
 }
 ?>

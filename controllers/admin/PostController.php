@@ -16,16 +16,30 @@ class PostController extends Controller
         require_once 'models/admin/PostModel.php';
         $md = new PostModel;
         $data = $md->getAllPost();
-        $this->render('post',$data,'DANH SACH BAI VIET','admin');
+        $this->render('post',$data,'DANH SÁCH BÀI VIẾT','admin');
     }
 
     function show(){
         if(isset($_REQUEST['id'])){
             $id = $_REQUEST['id'];
-            require_once 'vendor/Model.php';
-            require_once 'models/admin/PostModel.php';
-            $md = new PostModel;
-            
+            if($id != 'null'){
+                require_once 'vendor/Model.php';
+                require_once 'models/admin/PostModel.php';
+                $md = new PostModel;
+                $result = $md->getPostByID($id);
+                $data['id'] = $result[0]['ID'];
+                $data['title'] = $result[0]['TITLE'];
+                $data['pathImage'] = $result[0]['PATH_IMAGE'];
+                $data['content'] = $result[0]['CONTENT']; 
+                echo json_encode($data);
+            }else{
+                $data['id'] = '';
+                $data['title'] = '';
+                $data['pathImage'] = '';
+                $data['content'] = ''; 
+                echo json_encode($data);
+            }
+
         }
     }
 
@@ -50,8 +64,14 @@ class PostController extends Controller
                 else $data = "Insert Failed";
                 echo json_encode($data);
             }else{
-
-            }
+                $now = new DateTime(null, new DateTimeZone('ASIA/Ho_Chi_Minh'));
+                $now = $now->format('Y-m-d H:i:s');
+                $setVal = array($title, $content, $now, $pathImage);
+                $result = $md->update('post',$row, $setVal, 'ID = "'. $id. '"');
+                if($result) $data = "Update Successfull";
+                else $data = "Update Failed";
+                echo json_encode($data);
+            }   
         }
 
     }

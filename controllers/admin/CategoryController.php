@@ -17,7 +17,7 @@ class CategoryController extends Controller
         $md = new CategoryModel;
         $data['category'] = $md->getAllCategory();
         $data['categoryOfParent'] = $md->getParentCategory();
-        $this->render('category',$data, 'DANH SÁCH LOẠI SẢN PHẨM','admin');
+        $this->render('category',$data, 'LOẠI SẢN PHẨM','admin');
     }
 
     function show()

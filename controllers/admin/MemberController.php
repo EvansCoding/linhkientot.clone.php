@@ -17,7 +17,7 @@ class MemberController extends Controller
         require_once 'models/admin/MemberModel.php';
         $md = new MemberModel;
         $data = $md->getAllMember();
-        $this->render('member',$data,'DANH SACH THANH VIEN','admin');
+        $this->render('member',$data,'DANH SÁCH NHÂN VIÊN','admin');
     }
 
     function show()
@@ -97,5 +97,7 @@ class MemberController extends Controller
        $result = $md->delete('member', 'ID = '. $id.' AND ID != 1');
        echo $result;
     }
+
+   
 }
 ?>

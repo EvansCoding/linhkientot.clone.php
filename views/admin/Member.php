@@ -20,9 +20,9 @@
                 <thead style="width: 100%">
                     <tr>
                         <th style="width: 5%;">#</th>
-                        <th style="width: 30%; min-width: 180px;">Nickname</th>
-                        <th style="width: auto;min-width: 100px;">Username</th>
-                        <th style="width: auto;min-width: 100px;">Image</th>
+                        <th style="width: 30%; min-width: 180px;">Họ và tên</th>
+                        <th style="width: auto;min-width: 100px;">Tài khoản</th>
+                        <th style="width: auto;min-width: 100px;">Hình ảnh</th>
                         <th style="width: 10%; min-width: 100px;">Hành động</th>
                     </tr>
                 </thead>
@@ -60,7 +60,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Info Member</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin nhân viên</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -69,26 +69,26 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input id="idMember" type="hidden" name="" value="">
-                        <label for="inputAddress">Nickname</label>
-                        <input type="text" class="form-control" id="nickname" placeholder="Enter to nickname" required="required">
+                        <label for="inputAddress"> <strong>Họ và tên</strong></label>
+                        <input type="text" class="form-control" id="nickname" placeholder="" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter to username" required="required">
+                        <label for="inputAddress"> <strong>Tài khoản</strong> </label>
+                        <input type="text" class="form-control" id="username" placeholder="" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter to email" required="required"/> 
+                        <label for=""><strong>Email</strong></label>
+                        <input type="email" class="form-control" id="email" placeholder="" required="required"/> 
                     </div>
                     <div class="form-group">
-                       <label for="">Password</label> 
-                       <input type="password" class="form-control" id="password" placeholder="Enter to password" required="required">
+                       <label for=""><strong>Mật khẩu</strong></label> 
+                       <input type="password" class="form-control" id="password" placeholder="" required="required">
                     </div>
                     <div class="form-group">
-                    <label for="">Image</label> 
+                    <label for=""><strong>Hình ảnh</strong>̀</label> 
                   <div class="input-group mb-3">
                           
-                        <input type="text" id="thumbnail" class="form-control" placeholder="Enter for image" aria-label="Enter for image" aria-describedby="basic-addon2">
+                        <input type="text" id="thumbnail" class="form-control" placeholder="" aria-label="Enter for image" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <a data-toggle="modal" data-target="#myModal1" class="btn btn-dark " style="color: white" onclick="window.open('filemanager/dialog.php?type=1&amp;popup=1&amp;field_id=thumbnail  ','pdwfilebrowser','width=1000,height=650,scrollbars=no,toolbar=no,location=no');">
                                 <i class="fa fa-upload" style="color: white"></i>
@@ -123,13 +123,13 @@
 
     $(".btnDelete").click(function() {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Chắc chắn xóa!',
+            text: "Dữ liệu sẽ không được khôi phục!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Vâng'
         }).then((result) => {
             if (result.value) {
                 var id = $(this).data('id');
@@ -144,14 +144,14 @@
                     success: function(result) {
                         if (result == '1') {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Đã xóa!',
+                                'Dữ liệu đã được xóa',
                                 'success'
                             )
                             location.reload();
                         } else {
                             Swal.fire(
-                                'Delete failed!',
+                                'Xóa thất bại!',
                                 '',
                                 'error'
                             )

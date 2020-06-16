@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="2KSoftware.vn">
-    <title>Management Data</title>
+    <title>Quản lý Linhkientot.vn</title>
     <base href="/web-shop/">
     <link rel="shortcut icon " href="public/Admin/assets/img/icon/icons8_google_cloud_platform.ico">
     <link rel="stylesheet" href="public/admin/lib/bootstrap.min.css">
@@ -23,7 +23,7 @@
 
     <!--Main Styles-->
     <link rel="stylesheet" href="public/admin/assets/css/styles.css">
-
+    <link rel="stylesheet" href="public/default/vender/javascript/toastr/toastr.min.css">
 
 
 </head>
@@ -34,7 +34,7 @@
             <div class="sidebar-content">
                 <!-- sidebar-brand-->
                 <div class="sidebar-item sidebar-brand">
-                    <a href="#"> 2K Software</a>
+                    <a href="#"> Linhkientot.vn</a>
                 </div>
                 <!-- sidebar-header-->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
@@ -56,56 +56,56 @@
                 <div class="sidebar-item sidebar-menu">
                     <ul>
                         <li class="header-menu">
-                            <span>ADMIN SHOP</span>
+                            <span>CỬA HÀNG</span>
                         </li>
                         <li>
                             <a href="/web-shop/indexadmin/dashboard">
                                 <i class="fa fa-tachometer-alt"></i>
-                                <span class="menu-text">Dashboard</span>
+                                <span class="menu-text">Thống kê</span>
                                 <span class="badge badge-pill badge-success">New</span>
                             </a>
                         </li>
                         <li>
-                            <a>
+                            <a href="/web-shop/cart">
                                 <i class="fa fa-cart-arrow-down"></i>
-                                <span class="menu-text">Order Manager</span>
+                                <span class="menu-text">Quản lý đơn hàng</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="/web-shop/category">
                                 <i class="fa fa-folder-open"></i>
-                                <span class="menu-text">Category</span>
+                                <span class="menu-text">Loại sản phẩm</span>
                             </a>
                         </li>
                         <li>
                             <a href="/web-shop/product">
                                 <i class="fas fa-gifts"></i>
-                                <span class="menu-text">Product</span>
+                                <span class="menu-text">Sản phẩm</span>
                             </a>
                         </li>
                         <li class="header-menu">
-                            <span>ADMIN CONTENT </span>
+                            <span>NỘI DUNG </span>
                         </li>
                         <li>
                             <a href="/web-shop/banner">
                                 <i class="fa fa-image"></i>
-                                <span class="menu-text">Banner</span>
+                                <span class="menu-text">Ảnh bìa</span>
                             </a>
                         </li>
                         <li>
                             <a href="/web-shop/post">
                                 <i class="fab fa-blogger"></i>
-                                <span class="menu-text">Blog/News</span>
+                                <span class="menu-text">Bài viết/ tin tức</span>
                             </a>
                         </li>
 
                         <li class="header-menu">
-                            <span>ADMIN SYSTEM </span> </li>
+                            <span>HỆ THỐNG </span> </li>
                         <li>
                             <a href="/web-shop/member">
                                 <i class="fas fa-users-cog"></i>
-                                <span class="menu-text">User</span>
+                                <span class="menu-text">Nhân viên</span>
                             </a>
                         </li>
                     </ul>
@@ -128,11 +128,11 @@
 
         <main class="page-content pt-2">
             <?php echo $content; ?>
-
         </main>
     </div>
        <!-- using online scripts -->
     <script src="public/admin/lib/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="public/default/vender/javascript/toastr/toastr.min.js"></script>
     <script src="public/admin/lib/popper.min.js" type="text/javascript"></script>
     <script src="public/admin/lib/bootstrap.min.js" type="text/javascript"></script>
     <script src="public/admin/lib/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>

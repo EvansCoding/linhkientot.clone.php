@@ -24,6 +24,12 @@ class Model
 		return $stmt->fetchAll();
     }
     
+    function query($sql){
+        $stmt = $this->conn->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
+    }
+    
 	function exe_query($sql)
 	{
 		$stmt = $this->conn->prepare($sql);

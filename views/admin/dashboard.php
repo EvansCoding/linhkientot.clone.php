@@ -1,10 +1,10 @@
 <style>
     .comp-card {
-        -webkit-box-shadow: 3px 3px 3px 3px #ccc;
+        -webkit-box-shadow: 1px 1px 1px 1px #ccc;
         /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-        -moz-box-shadow: 3px 3px 3px 3px #ccc;
+        -moz-box-shadow: 1px 1px 1px 1px #ccc;
         /* Firefox 3.5 - 3.6 */
-        box-shadow: 3px 3px 3px 3px #ccc;
+        box-shadow: 1px 1px 1px 1px #ccc;
     }
 </style>
 
@@ -20,7 +20,7 @@
     </div>
     <div class="row title">
         <div class="form-group col-md-12">
-            <h2 class="title-content">DASHBOARD</h2>
+            <h2 class="title-content">THỐNG KÊ</h2>
         </div>
     </div>
     <div class="row main-content" style="margin-top: 20px">
@@ -32,7 +32,7 @@
                             <div class="row align-items-center">
                                 <div class="col" style="color: white">
                                     <h6 class="m-b-25">Tổng sản phẩm</h6>
-                                    <h3 class="f-w-700 text-c-blue">15,000</h3>
+                                    <h3 class="f-w-700 text-c-blue"><?php echo isset($data['totalProduct']) ? $data['totalProduct'][0][0]: 0 ?></h3>
                                     <p class="m-b-0">_</p>
                                 </div>
                                 <div class="col-auto" style="color: white">
@@ -48,7 +48,8 @@
                             <div class="row align-items-center">
                                 <div class="col" style="color: white">
                                     <h6 class="m-b-25">Sản phẩm đã bán</h6>
-                                    <h3 class="f-w-700 text-c-blue">1,500</h3>
+                                    
+                                    <h3 class="f-w-700 text-c-blue"><?php echo isset($data['totalOrderProduct']) ? $data['totalOrderProduct'][0][0]: 0 ?></h3>
                                     <p class="m-b-0">_</p>
                                 </div>
                                 <div class="col-auto" style="color: white">
@@ -58,14 +59,14 @@
                         </div>
                     </div>
                 </div>
-
+             
                 <div class="col-md-12 col-xl-4">
                     <div class="card comp-card" style="background-color: #47CD94; border: none">
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col" style="color: white">
                                     <h6 class="m-b-25">Tổng doanh thu</h6>
-                                    <h3 class="f-w-700 text-c-blue">1,500,000,000</h3>
+                                    <h3 class="f-w-700 text-c-blue"><?php echo isset($data['totalQuantum']) ? number_format($data['totalQuantum'][0][0], 0, '', ',') : 0 ?> VNĐ</h3>
                                     <p class="m-b-0">_</p>
                                 </div>
                                 <div class="col-auto" style="color: white">
@@ -89,34 +90,36 @@
                                 <th scope="col" style="width: 300px">Họ và Tên</th>
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col" style="width: 200px">Trạng thái</th>
-                                <th scope="col" style="width: 100px; text-align:center">Chi tiết</th>
+                                <th scope="col" style="width: 100px; text-align:center">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td><span class="badge badge-danger">Chưa xem</span></td>
-                                <td style="text-align: center;"> <i class="fas fa-eye bg-c-blue"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td><span class="badge badge-danger">Chưa xem</span></td>
-                                <td style="text-align: center;"> <i class="fas fa-eye bg-c-blue"></i></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                <td><span class="badge badge-danger">Chưa xem</span></td>
-                                <td style="text-align: center;"> <a onclick="Popup(null)"><i class="fas fa-eye bg-c-blue"></i></a> </td>
-                            </tr>
+                            <?php
+                            if (isset($data['products'])) {
+                                foreach ($data['products'] as $key => $value) {
+                            ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $key + 1 ?></th>
+                                        <td><?php echo $value['PHONE'] ?></td>
+                                        <td><?php echo $value['CUSTOMER'] ?></td>
+                                        <td><?php echo $value['ADDRESS'] ?></td>
+                                        <td><span class="badge badge-danger">Chưa xem</span></td>
+
+                                        <td>
+                                            <button type="button" class="btn" data-toggle="modal" onclick="Popup('<?php echo $value['ID']; ?>')">
+                                                <i class="fas fa-eye bg-c-blue"></i>
+                                            </button>
+                                            <button type="button" class="btn btnDelete" data-id='<?php echo $value['ID']; ?>'>
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
+
+
                         </tbody>
                     </table>
                 </div>
@@ -137,13 +140,14 @@
                 <div class="modal-body">
 
                     <div class="form-row">
+                    <input type="hidden" class="form-control" id="idItem">
                         <div class="form-group col-md-6">
                             <label for="customer"> <strong> Họ và Tên </strong></label>
-                            <input type="email" class="form-control" id="customer">
+                            <input type="text" class="form-control" id="customer">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="phone"> <strong> Số điện thoại </strong></label>
-                            <input type="password" class="form-control" id="phone">
+                            <input type="text" class="form-control" id="phone">
                         </div>
                     </div>
                     <div class="form-group">
@@ -152,7 +156,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email"> <strong> Email</strong></label>
-                        <input type="email" class="form-control" id="email" placeholder="nguyen.ntkiet1999@gmail.com">
+                        <input type="text" class="form-control" id="email" placeholder="nguyen.ntkiet1999@gmail.com">
                     </div>
                     <div class="form-group">
                         <label for="note"> <strong>Ghi chú</strong> </label>
@@ -164,62 +168,134 @@
                             <thead>
                                 <tr>
                                     <th scope="col" style="width: 50px;">#</th>
-                                    <th scope="col">Mã sản phẩm</th>
+                                    <th scope="col" style="width: 500px">Tên sản phẩm</th>
                                     <th scope="col" style=" text-align:center;">Hình ảnh</th>
                                     <th scope="col" style="width: 100px; text-align:center;">Số lượng</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td style="text-align: center;">1</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td style="text-align: center;">2</td>
-                                </tr>
+                            <tbody id="bodyTalbe">
+                                
 
                             </tbody>
+                            
+                   
                         </table>
+                        <div class="form-group col-4" style="float: right">
+                        <label for="email"> <strong> Tổng tiền </strong></label>
+                        <input type="text" class="form-control " id="total" placeholder="" disabled>
+                    </div>
+                    <div style="clear:both"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" id="btn-saveChange" class="btn btn-primary">Lưu</button>
+                    <button type="submit" id="btn-saveChange" class="btn btn-primary">Chấp nhận</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 <script src="public/admin/lib/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script>
     function Popup(idItem) {
-        var id = idItem;
+
         $.ajax({
-            url: 'ordermanager/show',
+            url: 'Product/ListOrderProduct',
             type: 'GET',
             data: {
-                id
+                idItem
             },
             dataType: 'JSON',
             success: function(data) {
-                console.log(data);
                 $('#idItem').val(data.id);
-                $('#titleCategory').val(data.title);
-                $('#valueCategory').val(data.value);
-                $("#select_parent option").removeAttr("selected");
-                $('#select_parent option[value="' + data.id_parent + '"]').attr('selected', 'selected');
+                $('#customer').val(data.customer);
+                $('#phone').val(data.phone);
+                $('#address').val(data.address);
+                $('#email').val(data.email);
+                $('#note').val(data.note);
+                let index = 1;
+                $('#bodyTalbe').empty();
+                data.product.forEach(element => {
+
+                    $('#bodyTalbe').append('<tr><th scope="row">'+(index++)+'</th><td >'+element[1]+'</td><td style="text-align: center;"> <img style="width: 50px; height: 50px" src="'+element[2]+'" /></td><td style="text-align: center;">'+element[3]+'</td></tr>');
+                });
+                debugger;
+                var total = data.total[0];
+                total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                $('#total').val(total +"đ");
                 $('#exampleModalCenter').modal('show');
             },
             error: function(xhr, status) {
                 alert(status);
             }
         });
-
-        $('#exampleModalCenter').modal('show');
     }
+
+    $(document).on('click','#btn-saveChange', function(){
+        var id = $('#idItem').val();
+        $.ajax({
+            url : "Cart/ChangeStatus",
+            type : "POST",
+            dataType : "JSON",
+            data: {
+                id
+            },
+            success : function (result){                                      
+                if(result == 'error')
+                {
+                    toastr["error"]("Đơn hàng lỗi!");
+                    $('#exampleModalCenter').modal('toggle');
+                }
+                else{
+                    toastr["success"]("Đã chấp nhận đơn hàng!");
+                    $('#exampleModalCenter').modal('toggle');
+                    setTimeout(function(){
+                        window.location.href="IndexAdmin/dashboard";
+                    }, 1000); 
+                }
+            }
+        });
+    });
+
+    $(".btnDelete").click(function() {
+        Swal.fire({
+            title: 'Bạn chắc chứ',
+            text: "Dữ liệu sẽ không được khôi phục!",
+            icon: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Vâng'
+        }).then((result) => {
+            if (result.value) {
+                var id = $(this).data('id');
+
+                $.ajax({
+                    url: 'cart/delete',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        id
+                    },
+                    success: function(result) {
+                        if (result == '1') {
+                            Swal.fire(
+                                'Xóa thành công!',
+                                'Dữ liệu của bạn đã được xóa!',
+                                'success'
+                            )
+                            location.reload();
+                        } else {
+                            Swal.fire(
+                                'Xóa thất bại!',
+                                '',
+                                'error'
+                            )
+                        }
+                    }
+                })
+            }
+        });
+    });
 </script>

@@ -24,7 +24,7 @@
                         <th style="width: 5%;">#</th>
                         <th style="width: 30%; min-width: 120px;">Tên</th>
                         <th style="width: 30%;min-width: 100px;">Hình ảnh</th>
-                        <th style="width: auto;min-width: 100px;">Update at</th>
+                        <th style="width: auto;min-width: 100px;">Ngày cập nhật</th>
                         <th style="width: 10%; min-width: 100px;">Hành động</th>
                     </tr>
                 </thead>
@@ -68,7 +68,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg " role="document">
         <div class="modal-content ">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: 700"> Thông tin Post</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: 700"> Thông tin bài viết</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -79,16 +79,16 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <input id="idItem" type="hidden" name="" value="">
-                                <label for="inputAddress"> <strong> Title</strong></label>
-                                <input type="text" class="form-control" id="titleItem" placeholder="Enter for title" required="required">
+                                <label for="inputAddress"> <strong> Chủ đề</strong></label>
+                                <input type="text" class="form-control" id="title" placeholder="" required="required">
                             </div>
                         </div>
                     </div>
-                    <label for="inputImage"> <strong> Path Image</strong></label>
+                    <label for="inputImage"> <strong> Đường dẫn</strong></label>
                     <div class="input-group mb-3">
-                        <input type="text" id="imageItem" class="form-control" placeholder="Enter for image" aria-label="Enter for image" aria-describedby="basic-addon2">
+                        <input type="text" id="path_image" class="form-control" placeholder="" aria-label="Enter for image" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <a data-toggle="modal" data-target="#myModal1" class="btn btn-dark " style="color: white" onclick="window.open('filemanager/dialog.php?type=1&amp;popup=1&amp;field_id=imageItem  ','pdwfilebrowser','width=1000,height=650,scrollbars=no,toolbar=no,location=no');">
+                            <a data-toggle="modal" data-target="#myModal1" class="btn btn-dark " style="color: white" onclick="window.open('filemanager/dialog.php?type=1&amp;popup=1&amp;field_id=path_image  ','pdwfilebrowser','width=1000,height=650,scrollbars=no,toolbar=no,location=no');">
                                 <i class="fa fa-upload" style="color: white"></i>
                                 Browse
                             </a>
@@ -127,13 +127,13 @@
 
     $(".btnDelete").click(function() {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Chắc chắn xóa',
+            text: "Dữ liệu sẽ không được hồi phục",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Vâng'
         }).then((result) => {
             if (result.value) {
                 var id = $(this).data('id');
@@ -147,14 +147,14 @@
                     success: function(result) {
                         if (result == '1') {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Đã xóa',
+                                'Dữ liệu đã được xóa!',
                                 'success'
                             )
                             location.reload();
                         } else {
                             Swal.fire(
-                                'Delete failed!',
+                                'Xóa thất bại   !',
                                 '',
                                 'error'
                             )
@@ -168,7 +168,7 @@
     function Popup(idItem) {
         var id = idItem;
         $.ajax({
-            url: 'banner/show',
+            url: 'Post/show',
             type: 'GET',
             data: {
                 id
@@ -176,9 +176,9 @@
             dataType: 'JSON',
             success: function(data) {
                 $('#idItem').val(data.id);
-                $('#titleItem').val(data.title);
-                $('#imageItem').val(data.pathImage);
-                $('#serialItem').val(data.serial);
+                $('#title').val(data.title);
+                $('#path_image').val(data.pathImage);
+                tinyMCE.get('contentItem').setContent(data.content);
                 $('#exampleModalCenter').modal('show');
             },
             error: function(xhr, status) {
@@ -189,11 +189,10 @@
 
     $('#btn-saveChange').click(function() {
         var id = $("#idItem").val();
-        var title = $('#titleItem').val();
-        var pathImage = $('#imageItem').val();
-        var content = $('#contentItem').val();
+        var title = $('#title').val();
+        var pathImage = $('#path_image').val();
+        var content = tinyMCE.get('contentItem').getContent();
         var data = [id, title, content, pathImage];
-        debugger;
         $.ajax({
             url: 'post/store',
             method: 'POST',

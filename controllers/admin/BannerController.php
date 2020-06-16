@@ -17,7 +17,7 @@ class BannerController extends Controller
         require_once 'models/admin/BannerModel.php';
         $md = new BannerModel;
         $data = $md->getAllBanner();
-        $this->render('banner',$data, 'DANH SACH BANNER', 'admin');
+        $this->render('banner',$data, 'DANH SÁCH ẢNH BÌA', 'admin');
     }
 
     function show()

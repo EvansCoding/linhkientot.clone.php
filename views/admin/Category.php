@@ -87,15 +87,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input id="idItem" type="hidden" name="" value="">
-                        <label for="inputAddress">Tên</label>
+                        <label for="inputAddress"><strong>Tên</strong></label>
                         <input type="text" class="form-control" id="titleCategory" placeholder="Nhập tên thể loại" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress">Dữ liệu</label>
+                        <label for="inputAddress"><strong>Dữ liệu</strong></label>
                         <input type="text" class="form-control" id="valueCategory" placeholder="Nhập dữ liệu thể loại" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="">Loại loại cha</label>
+                        <label for=""> <strong>Loại loại cha</strong></label>
                         <select id="select_parent" class="custom-select custom-select-md mb-3">
                             <option value="null">Danh mục cha</option>
                             <?php
@@ -132,13 +132,13 @@
 
     $(".btnDelete").click(function() {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Bạn chắc chắn xóa!',
+            text: "Dữ liệu sẽ mất!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Vâng!'
         }).then((result) => {
             if (result.value) {
                 var id = $(this).data('id');
@@ -153,14 +153,14 @@
                     success: function(result) {
                         if (result == '1') {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Đã xóa',
+                                'Dữ liệu của bạn đã được xóa!',
                                 'success'
                             )
                             location.reload();
                         } else {
                             Swal.fire(
-                                'Delete failed!',
+                                'Xóa thất bại!',
                                 '',
                                 'error'
                             )

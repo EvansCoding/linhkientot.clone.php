@@ -82,7 +82,7 @@
                     <div class="form-row">
                     <div class="form-group col-md-3">
                             <label for="name"> <strong> Mã sản phẩm </strong></label>
-                            <input type="text" class="form-control" id="idItem">
+                            <input type="text" class="form-control" id="idItem" disabled>
                         </div>
                         <div class="form-group col-md-9">
                             <label for="name"> <strong> Tên sản phẩm </strong></label>
@@ -156,6 +156,9 @@
 <script src="public/tinymce/tinymce.min.js" type="text/javascript"> </script>
 
 <script>
+$(document).ready(function(){
+    window.value=1;
+});
     $(".btnDelete").click(function() {
         Swal.fire({
             title: 'Bạn chắc chứ',
@@ -221,7 +224,7 @@
                     $('textarea#descriptionItem').val(data.description);
                     tinyMCE.get('contentItem').setContent(data.content);
                     $('#imageItem').val(data.image);
-                    window.value=1;
+                
                     if(data.listImage.length >0){
                         for (let index = 0; index < data.listImage.length; index++) {
                             $('#dynamically-btn-add-image').append('<div id="btn-img-' + window.value + '" class="form-row col-sm-12" style="padding: 0;margin: 0"><div class="form-group col-sm-1"><a  class="btn btn-danger btn-remove-image" style="color: white; width: 100%"><i class="far fa-trash-alt"></i></a></div><div class="form-group col-sm-11"><input id=field_' + (window.value) + ' type="text" class="form-control" id="discount" onclick="window.open(\'filemanager/dialog.php?type=1&amp;popup=1&amp;field_id=field_' + (window.value) + '  \',\'pdwfilebrowser\',\'width=1000,height=650,scrollbars=no,toolbar=no,location=no\');"></div></div>');
@@ -241,7 +244,8 @@
                     $('#discountItem').val(0);
                     $('#quantumItem').val(0);
                    
-                    $('textarea#descriptionItem').text('');
+                    $('#descriptionItem').val('');
+                    $('#dynamically-btn-add-image').html('');
                     tinyMCE.get('contentItem').setContent('');
                     $('#imageItem').val('');
                 }
@@ -260,6 +264,10 @@
             var pathImage = document.getElementById(this.id).value;
             listImage.push(pathImage);
         });
+        if(listImage.length == 0){
+            listImage = "";
+        }
+        debugger;
         data.push($('#idItem').val(), $('#nameItem').val(),$('#priceItem').val(),$('#discountItem').val(), $('#quantumItem').val(),$('textarea#descriptionItem').val(),tinyMCE.get('contentItem').getContent(), $('#imageItem').val(),$('#select_category').val(),listImage);
         let caseItem = $('#caseItem').val();
         $.ajax({

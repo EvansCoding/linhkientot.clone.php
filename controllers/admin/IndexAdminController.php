@@ -17,8 +17,21 @@ class IndexAdminController extends Controller
         if(!isset($_SESSION['admin'])){
             header("Location: http://localhost:8080/web-shop/indexadmin");
         }
-        $this->render('dashboard',null,null,'admin');
+        require_once 'vendor/Model.php';
+        require_once 'models/admin/CartModel.php';
+        $cart = new CartModel;
+        $data['products'] = $cart->query('SELECT * FROM CART WHERE STATUS = 0');
+        $data['totalProduct'] = $cart->query('SELECT COUNT(*) FROM PRODUCT');
+
+        $sqltotalProduct = "SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT.ID IN (SELECT CART_DETAIL.ID_PRODUCT FROM CART_DETAIL)";
+        $data['totalOrderProduct'] = $cart->query($sqltotalProduct);
+
+        $sqltotalQuantum = "SELECT SUM(PRODUCT.DISCOUNT * CART_DETAIL.QUANTUM) FROM PRODUCT INNER JOIN CART_DETAIL ON PRODUCT.ID = CART_DETAIL.ID_PRODUCT INNER JOIN CART ON CART.ID = CART_DETAIL.ID_CART WHERE CART.STATUS = 1";
+        $data['totalQuantum'] = $cart->query($sqltotalQuantum);
+        $this->render('dashboard',$data,null,'admin');
     }
+
+
 
     function login()
     {

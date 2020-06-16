@@ -11,5 +11,6 @@ class ImageModel extends Model
         $result = $this->select('*','IMAGE','ID_PRODUCT = \''.$id.'\'',null);
         return $result;
     }
+    
 }
 ?>
