@@ -104,14 +104,14 @@ class ProductClientController extends Controller
                                             <p>'.$value['DESCRIPTION'].'</p>
                                         </div>
                                         <div class="button-group cartinfo--static">
-                                            <button class="addToCart" type="button" title="Thêm vào giỏ hàng" >
+                                            <button class="addToCart" data-id="'.$value['ID'].'"  type="button" title="Thêm vào giỏ hàng" >
                                                 <i class="fa fa-shopping-cart"></i><span>Thêm vào giỏ hàng</span>
                                             </button>
                                         </div>
                                     </div>
                                     <div class="list-block">
         
-                                        <button class="addToCart btn-button" type="button" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></button>
+                                        <button class="addToCart btn-button" data-id="'.$value['ID'].'" type="button" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></button>
                                     </div>
                                 </div>
                                 </div>';

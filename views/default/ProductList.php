@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="list-block">
 
-                                        <button class="addToCart btn-button" data-id="<?php echo $value['ID']; ?>" type="button" title="Thêm vào giỏ hàng" ><i class="fa fa-shopping-cart"></i></button>
+                                        <button class="addToCart btn-button" data-id="<?php echo $value['ID']; ?>" type="button" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                     }
                     ?>
 
-      
+
                 </div>
                 <?php
                 require_once 'vendor/Model.php';
@@ -155,23 +155,23 @@
                 $rowcount      = count($data['ListProduct']);
                 $showpagination = $perPage->getAllPageLinks($rowcount);
                 ?>
-              <style>
-                     .pagination>.active>a, 
-                     .pagination>.active>a:focus, 
-                     .pagination>.active>a:hover, 
-                     .pagination>.active>span:hover,
-                     .pagination>.active>span, 
-                     .pagination>.active>span:focus {
-                        background-color:  #FF5C00 ;
-                        border-color: #FF5C00 ;
-                     }
-       
+                <style>
+                    .pagination>.active>a,
+                    .pagination>.active>a:focus,
+                    .pagination>.active>a:hover,
+                    .pagination>.active>span:hover,
+                    .pagination>.active>span,
+                    .pagination>.active>span:focus {
+                        background-color: #FF5C00;
+                        border-color: #FF5C00;
+                    }
 
-                        .pagination>li>a, 
-                        .pagination>li>span{
-                            border-color: #FF5C00 ;
-                        }
-                    </style>
+
+                    .pagination>li>a,
+                    .pagination>li>span {
+                        border-color: #FF5C00;
+                    }
+                </style>
                 <div class="product-filter product-filter-bottom filters-panel">
                     <div class="row">
                         <div class="col-sm-6 text-left">
@@ -186,7 +186,7 @@
                                 }
                                 ?>
                             </ul>
-                            
+
                         </div>
                         <div class="col-sm-6 text-right"></div>
                     </div>
@@ -228,7 +228,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        
+
         $(document).on("click", ".page", function() {
             var id = $('#titleCategory').data('id');
             var page = $(this).data('page');
@@ -252,43 +252,43 @@
 </script>
 
 <script>
-$(document).ready(function(){
-    $(".addToCart").click(function(){
-   // $(this).toggleClass('cart-ordered');
-    var id = $(this).data('id');
-    addToCart(id);
-  });
-  toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "2000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-});
+    $(document).ready(function() {
 
-function addToCart(id){
-  $.ajax({
-    url : "CartClient/addToCart",
-    type : "post",
-    dataType:"text",
-    data : {
-     id
-   },
-   success : function (result){
-    toastr["success"]("Thêm vào giỏ hàng thành công!");
-    $('.total-shopping-cart .items_cart').html(result);
-  }
-});
-}
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    });
+    $(document).on("click", ".addToCart", function() {
+        var id = $(this).data('id');
+        addToCart(id);
+    });
+
+    function addToCart(id) {
+        $.ajax({
+            url: "CartClient/addToCart",
+            type: "post",
+            dataType: "text",
+            data: {
+                id
+            },
+            success: function(result) {
+                toastr["success"]("Thêm vào giỏ hàng thành công!");
+                $('.total-shopping-cart .items_cart').html(result);
+            }
+        });
+    }
 </script>

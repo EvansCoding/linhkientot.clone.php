@@ -788,7 +788,7 @@
                                                                             </p>
                                                                         </div>
                                                                         <div class="button-group">
-                                                                            <button class="addToCart" type="button" onclick="cart.add('233');"> <span>Thêm vào giỏ</span></button>
+                                                                            <button class="addToCart" data-id='<?php echo $val['ID'] ?>' type="button" > <span>Thêm vào giỏ</span></button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1284,7 +1284,7 @@
                                                                             </p>
                                                                         </div>
                                                                         <div class="button-group">
-                                                                            <button class="addToCart" type="button" onclick="cart.add('355');"> <span>Thêm vào giỏ</span></button>
+                                                                            <button class="addToCart" type="button" data-id='<?php echo $val['ID'] ?>'> <span>Thêm vào giỏ</span></button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
