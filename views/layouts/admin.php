@@ -158,7 +158,7 @@
 
                 },
                 success: function(result) {
-                    location.replace('http://localhost:8080/web-shop/indexadmin');
+                    location.replace('http://localhost:8081/web-shop/indexadmin');
                 }
             })
         }
