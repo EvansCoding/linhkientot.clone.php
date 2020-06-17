@@ -339,7 +339,7 @@ input[type=password] {
         },
         success: function(result) {
           if (result == "LoginSuccess")
-            location.replace('http://localhost:8080/web-shop/indexadmin/dashboard');
+            location.replace('http://localhost:8081/web-shop/indexadmin/dashboard');
           $('#err').html(result);
         }
       })

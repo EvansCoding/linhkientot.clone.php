@@ -7,7 +7,7 @@ class CartController extends Controller
         $this->folder = "admin";
         if(!isset($_SESSION['admin']))
         {
-            header("Location: http://localhost:8080/web-shop/indexadmin");
+            header("Location: http://localhost:8081/web-shop/indexadmin");
         }
     }
 
